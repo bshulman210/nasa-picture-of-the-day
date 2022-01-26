@@ -2101,8 +2101,12 @@ const Home = props => {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     dispatch((0,_store_nasaPics__WEBPACK_IMPORTED_MODULE_2__.fetchAPOD)());
   }, []);
-  console.log('DATA HERE', nasaData);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "NASA's Astronomy Picture of the Day"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "API STUFF HERE ", nasaData.title));
+  const videoURL = nasaData.url;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "NASA's Astronomy Picture of the Day"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, nasaData.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("iframe", {
+    width: "750",
+    height: "500",
+    src: `${videoURL}&autoplay=1&loop=1`
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
 

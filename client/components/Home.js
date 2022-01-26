@@ -10,12 +10,13 @@ export const Home = (props) => {
     dispatch(fetchAPOD());
   }, []);
 
-  console.log('DATA HERE', nasaData);
+  const videoURL = nasaData.url;
 
   return (
     <div>
       <h3>NASA's Astronomy Picture of the Day</h3>
-      <h4>API STUFF HERE {nasaData.title}</h4>
+      <h4>{nasaData.title}</h4>
+      <iframe width="750" height="500" src={`${videoURL}&autoplay=1&loop=1`} />
     </div>
   );
 };
