@@ -1,26 +1,23 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAPOD } from '../store/nasaPics';
 
-/**
- * COMPONENT
- */
-export const Home = props => {
-  const {username} = props
+export const Home = (props) => {
+  const dispatch = useDispatch();
+  const nasaData = useSelector((state) => state.nasaPics);
+
+  useEffect(() => {
+    dispatch(fetchAPOD());
+  }, []);
+
+  console.log('DATA HERE', nasaData);
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3>NASA's Astronomy Picture of the Day</h3>
+      <h4>API STUFF HERE {nasaData.title}</h4>
     </div>
-  )
-}
+  );
+};
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    username: state.auth.username
-  }
-}
-
-export default connect(mapState)(Home)
+export default Home;
