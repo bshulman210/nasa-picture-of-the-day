@@ -16,7 +16,16 @@ export const Home = (props) => {
     <div>
       <h3>NASA's Astronomy Picture of the Day</h3>
       <h4>{nasaData.title}</h4>
-      <iframe width="750" height="500" src={`${videoURL}&autoplay=1&loop=1`} />
+      {nasaData.media_type === 'image' ? (
+        <img src={nasaData.url} width="750" height="500" />
+      ) : (
+        <iframe
+          width="750"
+          height="500"
+          src={`${videoURL}&autoplay=1&loop=1`}
+        />
+      )}
+      <h4>{nasaData.explanation}</h4>
     </div>
   );
 };
